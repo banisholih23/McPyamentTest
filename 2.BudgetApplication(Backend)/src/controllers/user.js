@@ -150,11 +150,9 @@ module.exports = {
             id: data[0].id,
             name: data[0].name,
             email: data[0].email,
-            picture: data[0].picture,
-            address: data[0].address,
-            nim: data[0].nim,
-            prodi: data[0].prodi,
-            faculty: data[0].faculty,
+            income: data[0].income,
+            expenses: data[0].expenses,
+            balance: data[0].balance,
             token: jwt.sign(
               {
                 id: data[0].id,

@@ -4,7 +4,7 @@ import {Row, Col, Form, FormGroup, Input, Label, Button} from 'reactstrap'
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
 
-import {register} from '../redux/actions/user'
+import {register} from '../redux/actions/login'
 
 class Register extends Component {
   constructor(props){
@@ -23,7 +23,7 @@ class Register extends Component {
 		const {name, email, password} = this.state
 
     this.props.register(name, email, password).then((response) => {
-      this.props.history.push('/login')
+      this.props.history.push('/')
       swal.fire({
   			icon: 'success',
   			title: 'Success',

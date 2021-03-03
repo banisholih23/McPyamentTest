@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import jwt from "jsonwebtoken";
-import { logoutAuth } from "../redux/actions/user";
+import { logoutAuth } from "../redux/actions/login";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 

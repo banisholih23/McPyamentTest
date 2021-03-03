@@ -4,7 +4,7 @@ import { Row, Col, Form, FormGroup, Input, Label, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { loginUser } from "../redux/actions/user";
+import { loginUser } from "../redux/actions/login";
 
 class Login extends Component {
   constructor(props) {

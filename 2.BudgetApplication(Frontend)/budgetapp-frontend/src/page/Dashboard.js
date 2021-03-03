@@ -14,7 +14,7 @@ import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
 
 import { getUser } from "../redux/actions/user";
-import { logoutAuth } from "../redux/actions/user";
+import { logoutAuth } from "../redux/actions/login";
 
 export class Dashboard extends Component {
   constructor(props) {
@@ -61,17 +61,9 @@ export class Dashboard extends Component {
   }
 
   render() {
-    const { dataUser, isLoading } = this.props.user;
-    const username = dataUser.map(({ name }) => name);
-    const income = dataUser.map(({ income }) => income);
-    const expenses = dataUser.map(({ expenses }) => expenses);
-    const balance = dataUser.map(({ balance }) => balance);
-
-    const name = username.join("");
-    const incomeJ = income.join("");
-    const expensesJ = expenses.join("");
-    const balanceJ = balance.join("");
-
+    const { isLoading } = this.props.user;
+    const { name, income, expenses, balance } = this.props.login.dataLogin;
+  
     return (
       <>
         <Row className="d-flex flex-column w-100">
@@ -103,7 +95,7 @@ export class Dashboard extends Component {
                       <Card body>
                         <CardTitle tag="h5">Income</CardTitle>
                         <div className="result">
-                          Rp. {parseFloat(incomeJ)
+                          Rp. {parseFloat(income)
                             .toFixed(2)
                             .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                         </div>
@@ -114,7 +106,7 @@ export class Dashboard extends Component {
                       <Card body>
                         <CardTitle tag="h5">Expenses</CardTitle>
                         <div className="result">
-                          Rp. {parseFloat(expensesJ)
+                          Rp. {parseFloat(expenses)
                             .toFixed(2)
                             .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                         </div>
@@ -125,7 +117,7 @@ export class Dashboard extends Component {
                       <Card body>
                         <CardTitle tag="h5">Balance</CardTitle>
                         <div className="result">
-                          Rp. {parseFloat(balanceJ)
+                          Rp. {parseFloat(balance)
                             .toFixed(2)
                             .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                         </div>
