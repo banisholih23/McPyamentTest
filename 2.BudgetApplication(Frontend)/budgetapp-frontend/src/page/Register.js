@@ -27,7 +27,7 @@ class Register extends Component {
       swal.fire({
   			icon: 'success',
   			title: 'Success',
-  			text: 'Register successfully'
+  			text: 'Register Successfully, Please Login!'
       })
     }).catch(function (error) {
       swal.fire({
