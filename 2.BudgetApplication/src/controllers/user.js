@@ -4,7 +4,6 @@ const moment = require('moment')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
-const {APP_URL} = process.env
 
 const getPage = (_page) => {
   const page = parseInt(_page)
@@ -79,5 +78,105 @@ module.exports = {
       }
     }
     response.status(200).send(data)
+  },
+  createUser: async (request, response) => {
+    const { name, email, password } = request.body
+    if (name && email && password && name !== '' && email !== '' && password !== '') {
+      const isExists = await userModel.getUserByCondition({ email })
+      if (isExists.length < 1) {
+        const userData = {
+          name,
+          email,
+          password: bcrypt.hashSync(request.body.password, saltRounds),
+          created_at: moment().format('LLLL')
+        }
+        const result = await userModel.createUser(userData)
+        if (result) {
+          const data = {
+            success: true,
+            msg: 'user data succesfully created!',
+            data: {
+              name: userData.name,
+              email: userData.email,
+              created_at: userData.created_at
+            }
+          }
+          response.status(201).send(data)
+        } else {
+          const data = {
+            success: false,
+            msg: 'Failed to create user',
+            data: request.body
+          }
+          response.status(400).send(data)
+        }
+      } else {
+        const data = {
+          success: false,
+          msg: 'email has been registered'
+        }
+        response.status(400).send(data)
+      }
+    } else {
+      const data = {
+        success: false,
+        msg: 'all form must be filled'
+      }
+      response.status(400).send(data)
+    }
+  },
+  loginUser: async (request, response) => {
+    const { email } = request.body
+    const data = await userModel.getUserByCondition({ email })
+    if (data.length > 0) {
+      const checkPassword = data[0].password
+      await bcrypt.compare(request.body.password, checkPassword, function(err, match) {
+        if (err) {
+          const login = {
+            succes: false,
+            msg: 'failed compare password'
+            }
+            response.status(401).send(login)
+        } else if (!match) {
+          const login = {
+            succes: false,
+            msg: 'inccorect password'
+            }
+            response.status(401).send(login)
+        } else {
+          const login = {
+            succes: true,
+            msg: 'login succes',
+            id: data[0].id,
+            name: data[0].name,
+            email: data[0].email,
+            picture: data[0].picture,
+            address: data[0].address,
+            nim: data[0].nim,
+            prodi: data[0].prodi,
+            faculty: data[0].faculty,
+            token: jwt.sign(
+              {
+                id: data[0].id,
+                name: data[0].name,
+                email: data[0].email,
+                role: 'user'
+              },
+              process.env.JWT_KEY,
+              {
+                expiresIn: '1h'
+              }
+            )
+          }
+          response.status(200).send(login)
+        }
+      })
+    } else {
+      const login = {
+        succes: false,
+        msg: 'email not found'
+      }
+      response.status(401).send(login)
+    }
   },
 }

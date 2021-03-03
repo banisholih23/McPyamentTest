@@ -25,4 +25,27 @@ module.exports = {
       });
     });
   },
+  createUser: (data) => {
+    const sql = "INSERT INTO user SET ?";
+    return new Promise((resolve, reject) => {
+      db.query(sql, data, (error, result) => {
+        if (error) {
+          reject(Error(error));
+        }
+        console.log(result);
+        resolve(result.insertId);
+      });
+    });
+  },
+  getUserByCondition: (data) => {
+    const sql = "SELECT * FROM user WHERE ?";
+    return new Promise((resolve, reject) => {
+      db.query(sql, data, (error, result) => {
+        if (error) {
+          reject(Error(error));
+        }
+        resolve(result);
+      });
+    });
+  },
 }
