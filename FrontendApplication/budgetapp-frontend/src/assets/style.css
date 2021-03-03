@@ -6,6 +6,12 @@ html, body, #root {
   background-image: url('./jumbotron.jpg');
   background-size: contain;
 }
+
+.result{
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .login-overlay {
   padding: 30px;
 }
@@ -107,10 +113,7 @@ html, body, #root {
 .carousel-books {
   background-color:  #1f1f1f;
 }
-.list-book {
-}
-.list-book-content {
-}
+
 .card-img {
   width: 235px;
   height: 200px;

@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import swal from 'sweetalert2'
 import {Row, Col, Form, FormGroup, Input, Label, Button} from 'reactstrap'
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
 
 import {register} from '../redux/actions/user'

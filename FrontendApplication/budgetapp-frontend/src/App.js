@@ -23,7 +23,7 @@ class App extends Component {
               <Switch>
                 <Route path='/' exact component={Login}/>
                 <Route path='/register' exact component={Register}/>
-                <Route path='/home' exact component={Dashboard}/>
+                <Route path='/dashboard' exact component={Dashboard}/>
               </Switch>
             </PersistGate>
           </HashRouter>

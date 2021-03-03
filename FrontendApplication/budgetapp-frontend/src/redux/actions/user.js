@@ -2,6 +2,14 @@ import qs from 'querystring'
 import axios from '../../services/Axios'
 const {REACT_APP_URL} = process.env
 
+const getUser = (param) =>{
+  const url = `${REACT_APP_URL}user?${param}`
+  return {
+    type: 'GETUSER',
+    payload: axios().get(url)
+    }
+  }
+
 const register = (name, email, password)=>{
   return {
     type: 'LOGOUT',
@@ -23,4 +31,4 @@ const logoutAuth = ()=>{
   }
 }
 
-export {register, loginUser, logoutAuth}
+export {getUser, register, loginUser, logoutAuth}

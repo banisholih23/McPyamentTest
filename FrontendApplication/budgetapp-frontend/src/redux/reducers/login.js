@@ -2,20 +2,19 @@ const initialState = {
   isLoading: false,
   isError: false,
   errorMsg: '',
-  dataUser: [],
-  pageInfo: []
+  token: null,
 }
 
-const user = (state=initialState, action) => {
+const login = (state=initialState, action) => {
   switch(action.type){
-    case 'GETUSER_PENDING': {
+    case 'LOGIN_PENDING': {
       return {
         ...state,
         isLoading: true,
         isError: false
       }
     }
-    case 'GETUSER_REJECTED': {
+    case 'LOGIN_REJECTED': {
       return {
         ...state,
         isLoading: false,
@@ -23,13 +22,20 @@ const user = (state=initialState, action) => {
         errorMsg: action.payload.response.data.message,
       }
     }
-    case 'GETUSER_FULFILLED': {
+    case 'LOGIN_FULFILLED': {
       return {
         ...state,
         isLoading: false,
         isError: false,
-        dataUser: action.payload.data.data,
-        pageInfo: action.payload.data.pageInfo
+        token: action.payload.data.token
+      }
+    }
+    case 'LOGOUT': {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        token: null
       }
     }
     default: {
@@ -40,4 +46,4 @@ const user = (state=initialState, action) => {
   }
 }
 
-export default user
+export default login
