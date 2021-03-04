@@ -31,7 +31,7 @@
 4. Type `yarn start` for run this app
 
 ## Result Website
-(https://banis-mcpayment.netlify.app/)
+https://banis-mcpayment.netlify.app/
 
 ## Contributors
 [Bani Sholih](https://github.com/banisholih23)
