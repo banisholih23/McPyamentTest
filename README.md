@@ -31,6 +31,12 @@
 3. Open the folder and type `npm install` or `yarn install` for install dependencies
 4. Type `yarn start` for run this app
 
+## Screenshots
+<div align="center">
+ <img src="https://i.ibb.co/vXzJ4P8/Capture.png">
+ <img src="https://i.ibb.co/vXzJ4P8/Capture.png">
+</div>
+
 ## Result Website
 https://banis-mcpayment.netlify.app/
 
