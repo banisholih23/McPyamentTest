@@ -34,7 +34,7 @@
 ## Screenshots
 <div align="center">
  <img src="https://i.ibb.co/vXzJ4P8/Capture.png">
- <img src="https://i.ibb.co/vXzJ4P8/Capture.png">
+ <img src="https://i.ibb.co/N3RLSh1/Capture2.png">
 </div>
 
 ## Result Website
