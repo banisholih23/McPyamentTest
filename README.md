@@ -3,7 +3,8 @@
 <h1 align="center">Bans Budget App</h1>
 
 1. Semua coding menggunakan bahasa pemrograman javascript
-2. Pembuatan Aplikasi Budget Application
+2. Soal No 1 ada di folder 1.Logic dan Soal No 2 ada di folder 2.BudgetApplication
+3. Pembuatan Aplikasi Budget Application
 
 ## Backend
 * Menggunakan NodeJs, ExpressJs
